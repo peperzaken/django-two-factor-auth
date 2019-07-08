@@ -88,6 +88,9 @@ class PhoneDevice(Device):
             and self.method == other.method \
             and self.key == other.key
 
+    def __hash__(self):
+        return hash((self.number, self.key, self.method))
+
     @property
     def bin_key(self):
         return unhexlify(self.key.encode())
